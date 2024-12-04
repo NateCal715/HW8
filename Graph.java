@@ -114,12 +114,12 @@ public class Graph {
       }
     }
     // Initialize a possible root vertex
-    int root = -1
+    int root = -1;
     for(int i = 0; i< numVertices; i++) {
       if (incomingEdges[i] == 0) {
         if (root != -1) {
           // Return -1 when more than 1 vertex with 0 incomingEdges
-          return -1
+          return -1;
         }
         root = i;
       }
