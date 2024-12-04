@@ -109,7 +109,7 @@ public class Graph {
     for (int i = 0; i < numVertices; i++) {
       // Iterating over adjList
       for (int dest : adjListArr[i]) {
-        // Add one degree to the dest vertex
+        // Icrement dest vertex incomingEdges count
         incomingEdges[dest]++;
       }
     }
