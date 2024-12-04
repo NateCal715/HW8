@@ -103,8 +103,28 @@ public class Graph {
    */
   
   public int findRoot() {
-
-    // ADD YOUR CODE HERE - DO NOT FORGET TO ADD YOUR NAME/SECTION AT TOP OF FILE
-    return -1;
+    // New array to track incoming edges for each vertex
+    int[] incomingEdges = new int[numVertices];
+    // Iterating thru Vertices
+    for (int i = 0; i < numVertices; i++) {
+      // Iterating over adjList
+      for (int dest : adjListArr[i]) {
+        // Add one degree to the dest vertex
+        incomingEdges[dest]++;
+      }
+    }
+    // Initialize a possible root vertex
+    int root = -1
+    for(int i = 0; i< numVertices; i++) {
+      if (incomingEdges[i] == 0) {
+        if (root != -1) {
+          // Return -1 when more than 1 vertex with 0 incomingEdges
+          return -1
+        }
+        root = i;
+      }
+    }
+    // Return value @ root or -1 if no vertex == 0 edges (no root)
+    return root != -1 ? vertexValues.get(root) : -1;
   } 
 }
