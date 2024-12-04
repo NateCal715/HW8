@@ -118,6 +118,7 @@ class ProblemSolutions {
                 }
             }
         }
+        // If processedNodes != numExams, returns false, othewise true
         return processedNodes == numExams;
 
     }
