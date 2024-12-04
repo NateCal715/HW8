@@ -227,14 +227,14 @@ class ProblemSolutions {
             }
         }
         // Record visited nodes
-        boolean[] visited = new boolean[numNodes];
+        int[] visited = new int[numNodes];
         // Record # of connected groups
         int groupCount = 0;
-        // Traversing thru nodes using DFS
+        
         for (i = 0; i < numNodes; i++) {
             if (!visited[i]) {
                 groupCount++;
-                dfs(i, graph, visited);
+                
             }
         }
         return groupCount;
