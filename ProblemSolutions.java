@@ -80,12 +80,15 @@ class ProblemSolutions {
         // Build directed graph's adjacency list
         ArrayList<Integer>[] adj = getAdjList(numExams, 
                                         prerequisites); 
-        
+        // Create array to count incomingEdges of nodes
         int[] incomingEdges = new int[numExams];
 
+        // Iterating thru nodes
         for (int i = 0; i < numExams; i++) {
-            for (int neighbor : adj[i]) {
-                incomingEdges[neighbor]++;
+            // Iterating thru adjList
+            for (int dest : adj[i]) {
+                // Increment incomingEdges at dest node
+                incomingEdges[dest]++;
             }
         }
 
@@ -101,10 +104,10 @@ class ProblemSolutions {
             int current = queue.poll();
             processedNodes++;
 
-            for (int neighbor : adj[current]) {
-                incomingEdges[neighbor]--;
-                if (incomingEdges[neighbor] == 0) {
-                    queue.add(neighbor);
+            for (int dest : adj[current]) {
+                incomingEdges[dest]--;
+                if (incomingEdges[dest] == 0) {
+                    queue.add(dest);
                 }
             }
         }
