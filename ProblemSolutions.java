@@ -226,10 +226,18 @@ class ProblemSolutions {
                 }
             }
         }
-
-        // YOUR CODE GOES HERE - you can add helper methods, you do not need
-        // to put all code in this method.
-        return -1;
+        // Record visited nodes
+        boolean[] visited = new boolean[numNodes];
+        // Record # of connected groups
+        int groupCount = 0;
+        // Traversing thru nodes using DFS
+        for (i = 0; i < numNodes; i++) {
+            if (!visited[i]) {
+                groupCount++;
+                dfs(i, graph, visited);
+            }
+        }
+        return groupCount;
     }
 
 }
