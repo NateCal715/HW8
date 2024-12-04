@@ -105,9 +105,8 @@ public class Graph {
   public int findRoot() {
     // New array to track incoming edges for each vertex
     int[] incomingEdges = new int[numVertices];
-    // Iterating thru Vertices
+    // Iterating thru Vertices (adjList)
     for (int i = 0; i < numVertices; i++) {
-      // Iterating over adjList
       for (int dest : adjListArr[i]) {
         // Icrement dest vertex incomingEdges count
         incomingEdges[dest]++;

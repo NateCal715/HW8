@@ -91,21 +91,28 @@ class ProblemSolutions {
                 incomingEdges[dest]++;
             }
         }
-
+        // Usage of queue for nodes with 0 incomingEdges
         Queue<Integer> queue = new LinkedList<>();
         for (int i = 0; i < numExams; i++) {
             if (incomingEdges[i] == 0) {
+                // Add element to queue if node has 0 incomingEdges
                 queue.add(i);
             }
         }
-
+        // Initialize queued nodes as processedNodes
         int processedNodes = 0;
+        // Check if queue contains elements
         while (!queue.isEmpty()) {
+            // Init current node by removing and returning head of queue
             int current = queue.poll();
+            // Increment count of processedNodes for each item in Queue
             processedNodes++;
 
+            // Iterates thru dest nodes of current node
             for (int dest : adj[current]) {
+                // Current already processed so remove one
                 incomingEdges[dest]--;
+                // If incomingEdge of dest node == 0, add to queue
                 if (incomingEdges[dest] == 0) {
                     queue.add(dest);
                 }
