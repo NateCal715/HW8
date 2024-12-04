@@ -80,9 +80,35 @@ class ProblemSolutions {
         // Build directed graph's adjacency list
         ArrayList<Integer>[] adj = getAdjList(numExams, 
                                         prerequisites); 
+        
+        int[] incomingEdges = new int[numExams];
 
-        // ADD YOUR CODE HERE - ADD YOUR NAME / SECTION AT TOP OF FILE
-        return false;
+        for (int i = 0; i < numExams; i++) {
+            for (int neighbor : adj[i]) {
+                incomingEdges[neighbor]++;
+            }
+        }
+
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < numExams; i++) {
+            if (incomingEdges[i] == 0) {
+                queue.add(i);
+            }
+        }
+
+        int processedNodes = 0;
+        while (!queue.isEmpty()) {
+            int current = queue.poll();
+            processedNodes++;
+
+            for (int neighbor : adj[current]) {
+                incomingEdges[neighbor]--;
+                if (incomingEdges[neighbor] == 0) {
+                    queue.add(neighbor);
+                }
+            }
+        }
+        return processedNodes == numExams;
 
     }
 
